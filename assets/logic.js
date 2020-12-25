@@ -1,39 +1,44 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
-    const apiKey = "16268ba07a6a60efe275cae875758b37";
+            const apiKey = "16268ba07a6a60efe275cae875758b37";
 
-    const runSearch = () => {
-        //get user input from inout box
-        const userInput = $("#search-value").val();
-        console.log("userInput: ", userInput);
-        //clear user inpt
-        $("#search-value").val("")
+            const runSearch = () => {
+                //get user input from inout box
+                const userInput = $("#search-value").val();
+                console.log("userInput: ", userInput);
+                //clear user inpt
+                $("#search-value").val("")
 
-        //generatate current weather
-        generateCurrentWeather(userInput);
+                //generatate current weather
+                generateCurrentWeather(userInput);
 
-        //generate forcast for 5 days
+                //generate forcast for 5 days
 
-        // $.ajax({
-        //     type: 'GET',
-        //     url:
-        //       'http://api.openweathermap.org/data/2.5/forecast?q=' +
-        //       searchValue +
-        //       '&appid=16268ba07a6a60efe275cae875758b37&units=imperial',
-        //     dataType: 'json',
+                // $.ajax({
+                //         type: 'GET',
+                //         url: `http://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=${apiKey}&units=imperial` +
+                //             searchValue +
+                //             '&appid=16268ba07a6a60efe275cae875758b37&units=imperial',
+                //         dataType: 'json',
+                //         success: (data) => {
+                //             console.log("data: ", data);
+                //             //display data
+                //             const forecastMarkup = `
+                // `
+                //         }
+                    // });
+                        //create button
 
-        //create button
-    };
-
-    const generateCurrentWeather = (input) => {
-        $.ajax({
-            type: "GET",
-            url: `http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=imperial`,
-            dataType: "json",
-            success: (data) => {
-                console.log("data: ",data);
-                //do stuff with data
-                const currentWeatherMarkup = `
+                    //generate current weather
+                    const generateCurrentWeather = (input) => {
+                        $.ajax({
+                            type: "GET",
+                            url: `http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=imperial`,
+                            dataType: "json",
+                            success: (data) => {
+                                console.log("data: ",data);
+                                //do stuff with data
+                                const currentWeatherMarkup = `
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">
@@ -47,13 +52,14 @@ $(document).ready(function() {
                     </div>
                 `;
 
-                $("#today").html(currentWeatherMarkup);
-            }
-        });
-    };
+                                $("#today").html(currentWeatherMarkup);
+                            }
+                        });
+                    };
 
-    //add event listener to search btn
-    $("#search-button").on("click", runSearch);
+                    //add event listener to search btn
+                    $("#search-button").on("click", runSearch);
 
-    //add event listender to the created buttons
-});
+                    //add event listender to the created buttons
+                }
+                });
