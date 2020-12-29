@@ -69,6 +69,7 @@ $(document).ready(function() {
                     </div>
                 `;
 
+<<<<<<< HEAD
                 $("#today").html(currentWeatherMarkup);
             }
         });
@@ -114,3 +115,16 @@ $(document).ready(function() {
     //add event listener to search btn
     $("#search-button").on("click", runSearch);
 });
+=======
+                                $("#today").html(currentWeatherMarkup);
+                            }
+                        });
+                    };
+
+                    //add event listener to search btn
+                    $("#search-button").on("click", runSearch);
+
+                    //add event listender to the created buttons
+                }
+                });
+>>>>>>> c25d818bbace6126a8603676dee37d1c4eb15dca
