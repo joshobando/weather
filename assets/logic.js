@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     const apiKey = "16268ba07a6a60efe275cae875758b37";
 
@@ -21,11 +21,11 @@ $(document).ready(function() {
         createButton(userInput);
 
         //check for duplicates
-        if ($.inArray(userInput,history) === -1) {
+        if ($.inArray(userInput, history) === -1) {
             //store cities in local storage
             history.push(userInput);
             //add updated history to local storage
-            localStorage.setItem("history",JSON.stringify(history));
+            localStorage.setItem("history", JSON.stringify(history));
         };
     };
 
@@ -53,7 +53,7 @@ $(document).ready(function() {
             url: `http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=imperial`,
             dataType: "json",
             success: (data) => {
-                console.log("today data: ",data);
+                console.log("today data: ", data);
                 //do stuff with data
                 const currentWeatherMarkup = `
                     <div class="card">
@@ -69,22 +69,21 @@ $(document).ready(function() {
                     </div>
                 `;
 
-<<<<<<< HEAD
                 $("#today").html(currentWeatherMarkup);
             }
         });
     };
-    
+
     const generateForecast = (input) => {
         $.ajax({
             type: "GET",
             url: `http://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=${apiKey}&units=imperial`,
             dataType: "json",
             success: (data) => {
-                console.log("forcast data: ",data);
+                console.log("forcast data: ", data);
                 //do stuff with data
                 let forecastWeatherMarkup = "";
-                
+
                 for (let i = 0; i < data.list.length; i++) {
                     if (data.list[i].dt_txt.indexOf("9:00:00") > -1) {
                         forecastWeatherMarkup += `
@@ -115,16 +114,3 @@ $(document).ready(function() {
     //add event listener to search btn
     $("#search-button").on("click", runSearch);
 });
-=======
-                                $("#today").html(currentWeatherMarkup);
-                            }
-                        });
-                    };
-
-                    //add event listener to search btn
-                    $("#search-button").on("click", runSearch);
-
-                    //add event listender to the created buttons
-                }
-                });
->>>>>>> c25d818bbace6126a8603676dee37d1c4eb15dca
