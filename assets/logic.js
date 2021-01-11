@@ -2,8 +2,6 @@ $(document).ready(function () {
 
     const apiKey = "16268ba07a6a60efe275cae875758b37";
 
-    const history = JSON.parse(localStorage.getItem("history")) || [];
-
     const runSearch = () => {
         //get user input from inout box
         const userInput = $("#search-value").val();
@@ -15,11 +13,16 @@ $(document).ready(function () {
         generateCurrentWeather(userInput);
 
         //generate forcast for 5 days
-        generateForecast(userInput);
 
-        //create button
-        createButton(userInput);
+        // $.ajax({
+        //     type: 'GET',
+        //     url:
+        //       'http://api.openweathermap.org/data/2.5/forecast?q=' +
+        //       searchValue +
+        //       '&appid=16268ba07a6a60efe275cae875758b37&units=imperial',
+        //     dataType: 'json',
 
+<<<<<<< HEAD
         //check for duplicates
         if ($.inArray(userInput, history) === -1) {
             //store cities in local storage
@@ -27,25 +30,10 @@ $(document).ready(function () {
             //add updated history to local storage
             localStorage.setItem("history", JSON.stringify(history));
         };
+=======
+        //create button
+>>>>>>> parent of 89deb21... finished logic for forecast
     };
-
-    //add event listender to the created buttons
-    const createButton = (input) => {
-        //create the button markup
-        let cityButton = $("<button>");
-        cityButton.addClass(".city-btn");
-        cityButton.text(input);
-        //add button to list
-        $(".history").append(cityButton);
-        //add event listener
-        cityButton.on("click", () => {
-            //generatate current weather
-            generateCurrentWeather(input);
-
-            //generate forcast for 5 days
-            generateForecast(input);
-        });
-    }
 
     const generateCurrentWeather = (input) => {
         $.ajax({
@@ -53,7 +41,11 @@ $(document).ready(function () {
             url: `http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=imperial`,
             dataType: "json",
             success: (data) => {
+<<<<<<< HEAD
                 console.log("today data: ", data);
+=======
+                console.log("data: ",data);
+>>>>>>> parent of 89deb21... finished logic for forecast
                 //do stuff with data
                 const currentWeatherMarkup = `
                     <div class="card">
@@ -63,7 +55,7 @@ $(document).ready(function () {
                                 <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png">
                             </h3>
                             <p class="card-text">Temperature: ${data.main.temp} °F</p>
-                            <p class="card-text">Humidity: ${data.main.humidity}%</p>
+                            <p class="card-text">Humidity: ${data.main.humidity} %</p>
                             <p class="card-text">Wind Speed: ${data.wind.speed} MPH</p>
                         </div>
                     </div>
@@ -73,6 +65,7 @@ $(document).ready(function () {
             }
         });
     };
+<<<<<<< HEAD
 
     const generateForecast = (input) => {
         $.ajax({
@@ -110,7 +103,11 @@ $(document).ready(function () {
     for (let i = 0; i < history.length; i++) {
         createButton(history[i]);
     }
+=======
+>>>>>>> parent of 89deb21... finished logic for forecast
 
     //add event listener to search btn
     $("#search-button").on("click", runSearch);
+
+    //add event listender to the created buttons
 });
