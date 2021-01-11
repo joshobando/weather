@@ -157,7 +157,7 @@ $(document).ready(function() {
     const generateCurrentWeather = (input) => {
         $.ajax({
             type: "GET",
-            url: `http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=imperial`,
+            url: `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=imperial`,
             dataType: "json",
             success: (data) => {
                 console.log("today data: ",data);
